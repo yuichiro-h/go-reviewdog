@@ -4,7 +4,7 @@ jobs:
   lint:
     working_directory: /go/src/github.com/yuichiro-h/go-reviewdog
     docker:
-      - image: rinrin/go-reviewdog:1.0.0
+      - image: rinrin/go-reviewdog
     steps:
       - checkout
       - run: reviewdog -reporter=github-pr-review
