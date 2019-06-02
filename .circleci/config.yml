@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  lint:
+    working_directory: /go/src/github.com/yuichiro-h/go-reviewdog
+    docker:
+      - image: rinrin/go-reviewdog:1.0.0
+    steps:
+      - checkout
+      - run: reviewdog -reporter=github-pr-review
+
+workflows:
+  feature:
+    jobs:
+      - lint:
+          context: reviewdog
+          filters:
+            branches:
+              only: test
